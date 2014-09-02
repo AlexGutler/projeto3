@@ -4,7 +4,7 @@
     $rota = explode('/',$url['path'],2);
 
     function rotas($param) {
-        $minhasRotas = array("contato","empresa","home","produtos","servicos","contato-mensagem");
+        $minhasRotas = array("contato","empresa","home","servicos","contato-mensagem");
         if(in_array($param[1], $minhasRotas)){
             require_once($param[1].'.php');
         } elseif ($param[1] == ""){
@@ -17,14 +17,10 @@
 ?>
 
 
-
-    <?php require_once('header.php');?>
+<?php require_once('header.ini.php');?>
 
     <div>
         <?php rotas($rota); ?>
     </div>
 
-    <?php require_once('footer.php');?>
-
-</body>
-</html>
+<?php require_once('footer.php');?>

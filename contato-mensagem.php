@@ -1,4 +1,4 @@
-<?php require_once('header.php');
+<?php
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $assunto = $_POST['assunto'];
@@ -34,6 +34,3 @@
         </div>
     </form>
 </div>
-
-
-<?php require_once('footer.php') ?>
