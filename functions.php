@@ -1,39 +1,32 @@
 <?php
-require_once("connection.php");
+require_once("fixtures/conexaoDB.php");
 
-$buscaConteudo = function ($sql) use ($connection)
-{
-    $stmt = $connection->prepare($sql);
-    $stmt->execute();
-    echo "teste";
-    return $stmt->fetch(\PDO::FETCH_ASSOC);
-};
-
-try {
-    $query = function($sql, $unique = false) use($connection) {
+function query($sql, $unique = false){
+    try{
+        $connection = conexaoDB();
         $stmt = $connection->prepare($sql);
         $stmt->execute();
-        if ($unique) {
-            return $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        if ($unique){
+            return $stmt->fetch(PDO::FETCH_ASSOC);
         } else {
             return $stmt->fetchAll(\PDO::FETCH_ASSOC);
         }
-
-    };
-
-    function uri_atual(){
-        $uri  = parse_url("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
-        $rota = explode('/',$uri['path'],2);
-//        if ($rota[1] == ""){
-//            return 'home';
-//        } else {
-//            return $rota[1];
-//        }
-        return $rota;
+    } catch (\PDOException $e){
+        print_r($e->getMessage());
     }
+}
 
-    function roteamento($param){
-        $minhasRotas = array("contato","empresa","home","servicos","contato-mensagem");
+function uri_atual(){
+    $uri  = parse_url("http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+    $rota = explode('/',$uri['path'],2);
+
+    return $rota;
+}
+
+function roteamento($param){
+    try{
+        $minhasRotas = array("contato","empresa","home","servicos");
         if(in_array($param[1], $minhasRotas)){
             require_once($param[1].'.php');
         } elseif ($param[1] == ""){
@@ -41,7 +34,7 @@ try {
         } else {
             require_once('404.php');
         }
+    } catch (\PDOException $e){
+        die(print_r($e->getMessage()));
     }
-} catch (\PDOException $e){
-    die(print_r($e->getMessage()));
 }

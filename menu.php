@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="home">Home</a>
+            <a class="navbar-brand" href="/">Home</a>
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -17,9 +17,9 @@
             </ul>
             <form class="navbar-form pull-right" role="search" action="busca.php" method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" class="form-control" placeholder="Pesquisar...">
                 </div>
-                <button type="submit" class="btn btn-default">Buscar!</button>
+                <button type="submit" class="btn btn-default">Pesquisar!</button>
             </form>
         </div><!--/.nav-collapse -->
 
