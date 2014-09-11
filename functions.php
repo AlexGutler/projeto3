@@ -26,12 +26,13 @@ function uri_atual(){
 
 function roteamento($param){
     try{
-        $minhasRotas = array("contato","empresa","home","servicos","busca");
+        $minhasRotas = array("contato","empresa","home","servicos","busca", "produtos");
         if(in_array($param[1], $minhasRotas)){
             require_once($param[1].'.php');
         } elseif ($param[1] == ""){
             require_once('home.php');
         } else {
+            header("HTTP/1.0 404 Not Found");
             require_once('404.php');
         }
     } catch (\PDOException $e){
