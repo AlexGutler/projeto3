@@ -26,7 +26,7 @@ function uri_atual(){
 
 function roteamento($param){
     try{
-        $minhasRotas = array("contato","empresa","home","servicos");
+        $minhasRotas = array("contato","empresa","home","servicos","busca");
         if(in_array($param[1], $minhasRotas)){
             require_once($param[1].'.php');
         } elseif ($param[1] == ""){

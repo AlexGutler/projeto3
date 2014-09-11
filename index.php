@@ -9,9 +9,8 @@ error_reporting(E_ALL | E_STRICT);
 
     <div>
         <?php
-            //echo($rota[1]."<br>");
             $uri = uri_atual();
-            //echo $uri[1];
+
             roteamento($uri);
         ?>
     </div>
