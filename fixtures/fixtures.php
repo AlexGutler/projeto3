@@ -3,6 +3,7 @@ require_once "fixtures/conexaoDB.php";
 
 $conn = conexaoDB();
 
+# --------------    CRIANDO AS PAGINAS ---------------
 $conn->query("DROP TABLE IF EXISTS `paginas`");
 
 $conn->query("create table `paginas` (
@@ -22,3 +23,23 @@ $sql = "insert into `paginas` (`id`,`rota`,`titulo`,`conteudo`) VALUES
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 
+
+# ----------------- CRIANDO USUARIOS ----------------
+$conn->query("DROP TABLE IF EXISTS `usuarios`");
+
+$conn->query("CREATE TABLE `usuarios`(
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `nome` varchar(100) NOT NULL,
+     `senha` varchar(255) NOT NULL,
+      PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT  CHARSET=utf8;");
+
+$sql="INSERT INTO `usuarios` (`id`,`nome`,`senha`) VALUES
+      (1, 'admin', :senha )";
+
+$stmt = $conn->prepare($sql);
+
+$senha = password_hash('adm00adm', PASSWORD_DEFAULT);
+
+$stmt->bindValue(':senha',$senha);
+$stmt->execute();
