@@ -1,1 +1,3 @@
-Estou mostrando o projeto3 para você me ajudar a encontrar o erro.
+- Projeto 4 do Curso Trilhando o Caminho com PHP -
+
+Implementado uma área administrativa para editar o conteúdo das páginas do site.
