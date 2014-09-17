@@ -9,6 +9,8 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <script src="../js/bootstrap.min.js"></script>
     <script src="http://code.jquery.com/jquery.js"></script>
+
+    <script src="ckeditor/ckeditor.js"></script>
 </head>
 
 <body>

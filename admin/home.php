@@ -26,7 +26,9 @@ if (isset($_SESSION['logado']) and $_SESSION['logado'] == 1){
 
             echo '<tr> <td>'.$pag['titulo'].'</td>';
 
-            echo '<td><a class="btn btn-danger" href="altera-paginas.php?id='.$pag['id'].'">Alterar</a></td>';
+            echo '';
+
+            echo '<td><a class="btn btn-danger" href="editar?id='.$pag['id'].'">Alterar</a></td>';
 
             echo '</tr>';
         }
@@ -55,3 +57,8 @@ if (isset($_SESSION['logado']) and $_SESSION['logado'] == 1){
 <!--    <a class="btn btn-primary" href="altera-paginas.php?id=--><?//= $produto['id']?><!--"> Alterar </a>-->
 <!--</td>-->
 
+
+<!--<form action="remove-produto.php" method="post">-->
+<!--    <input type="hidden" name="id" value="--><?//= $produto['id'] ?><!--">-->
+<!--    <button class="btn btn-danger" > Remover </button>-->
+<!--</form>-->
