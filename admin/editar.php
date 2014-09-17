@@ -1,11 +1,11 @@
 <?php
 session_start();
+$id = (isset($_POST['id'])) ? $_POST['id'] : null;
 
 if (!(isset($_SESSION['logado']) and $_SESSION['logado'] == 1)){
     header('location: login');
 } else {
-    $id = $_GET['id'];
-    setcookie("id",$id);
+    # setcookie("id",$id);
     $conteudo = buscaConteudo($id);
 ?>
 
@@ -27,8 +27,10 @@ if (!(isset($_SESSION['logado']) and $_SESSION['logado'] == 1)){
 
     if (isset($_POST['salvar'])){
         $conteudonovo = $_POST['editor1'];
-        $idc = $_COOKIE["id"];
-        $salvou = salvarAlteracao($idc, $conteudonovo);
+        #$idc = $_COOKIE["id"];
+
+        $id = $_POST['id'];
+        $salvou = salvarAlteracao($id, $conteudonovo);
 
         if ($salvou){
             echo '<p>Alterações salvas com sucesso!</p>';

@@ -26,10 +26,11 @@ if (isset($_SESSION['logado']) and $_SESSION['logado'] == 1){
 
             echo '<tr> <td>'.$pag['titulo'].'</td>';
 
-            echo '';
-
-            echo '<td><a class="btn btn-danger" href="editar?id='.$pag['id'].'">Alterar</a></td>';
-
+            echo '<td><form action="editar" method="post">';
+            echo '<input type="hidden" name="id" value="'.$pag['id'].'">';
+            echo '<button class="btn btn-danger">Alterar </button>';
+            echo '</form></td>';
+            #echo '<td><a class="btn btn-danger" href="editar?id='.$pag['id'].'">Alterar</a></td>';
             echo '</tr>';
         }
     } else {
@@ -45,7 +46,10 @@ if (isset($_SESSION['logado']) and $_SESSION['logado'] == 1){
 
 ?>
 
-
+<!--<form action="remove-produto.php" method="post">-->
+<!--    <input type="hidden" name="id" value="--><?//= $produto['id'] ?><!--">-->
+<!--    <button class="btn btn-danger" > Remover </button>-->
+<!--</form>-->
 
 
 <!--    <tr>-->
@@ -58,7 +62,4 @@ if (isset($_SESSION['logado']) and $_SESSION['logado'] == 1){
 <!--</td>-->
 
 
-<!--<form action="remove-produto.php" method="post">-->
-<!--    <input type="hidden" name="id" value="--><?//= $produto['id'] ?><!--">-->
-<!--    <button class="btn btn-danger" > Remover </button>-->
-<!--</form>-->
+

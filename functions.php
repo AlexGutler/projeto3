@@ -42,7 +42,7 @@ function roteamento($param){
 
 function rotasAdm($param){
     try{
-        $minhasRotas = array("admin/home", "admin/login", "admin/editar");
+        $minhasRotas = array("admin/home", "admin/login", "admin/editar", "admin/logout");
         if(in_array($param[1], $minhasRotas)){
             require_once($param[1].'.php');
         } elseif ($param[1] == "admin/"){

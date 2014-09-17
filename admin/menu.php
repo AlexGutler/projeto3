@@ -10,5 +10,11 @@
 
             <a class="navbar-brand" href="/admin/">Administração</a>
         </div>
+        <div class="collapse navbar-collapse pull-right">
+            <ul class="nav navbar-nav">
+                <li><a href="login">Login</a></li>
+                <li><a href="logout">Logout</a></li>
+            </ul>
+        </div>
     </div>
 </header>
