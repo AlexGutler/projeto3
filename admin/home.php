@@ -8,8 +8,12 @@ if (isset($_SESSION['logado']) and $_SESSION['logado'] == 1){
     $paginas = query($sql);
 
     echo '<div class="col-md-5">';
-    echo '<h1>Páginas do Sistema:</h1>';
+    echo '<h3>Páginas do Sistema:</h3>';
     if(!empty($paginas)){
+
+        if (array_key_exists("editado",$_GET) && $_GET["editado"]== true){
+            echo '<p class="alert-success">Alterações salvas com sucesso!</p>';
+        }
 
         echo '<table class="table table-hover">';
         echo '<thead>
@@ -22,15 +26,12 @@ if (isset($_SESSION['logado']) and $_SESSION['logado'] == 1){
 
 
         foreach($paginas as $pag){
-            #echo '<p><a href="'.$pag['rota'].'">'.$pag["titulo"].'</a></p>';
-
             echo '<tr> <td>'.$pag['titulo'].'</td>';
 
             echo '<td><form action="editar" method="post">';
             echo '<input type="hidden" name="id" value="'.$pag['id'].'">';
-            echo '<button class="btn btn-danger">Alterar </button>';
+            echo '<button class="btn btn-primary">Alterar </button>';
             echo '</form></td>';
-            #echo '<td><a class="btn btn-danger" href="editar?id='.$pag['id'].'">Alterar</a></td>';
             echo '</tr>';
         }
     } else {
@@ -39,27 +40,13 @@ if (isset($_SESSION['logado']) and $_SESSION['logado'] == 1){
 
     echo '</tbody>
           </table>';
+
     echo '</div>';
 } else {
     header('location: login');
 }
 
 ?>
-
-<!--<form action="remove-produto.php" method="post">-->
-<!--    <input type="hidden" name="id" value="--><?//= $produto['id'] ?><!--">-->
-<!--    <button class="btn btn-danger" > Remover </button>-->
-<!--</form>-->
-
-
-<!--    <tr>-->
-<!--        <td>$pag["titulo"]</td>-->
-<!--        <td><a href="'.$pag['id'].'"><button type="button" value="Editar"></button> </a> </td>-->
-<!--    </tr>-->
-<!---->
-<!--<td>-->
-<!--    <a class="btn btn-primary" href="altera-paginas.php?id=--><?//= $produto['id']?><!--"> Alterar </a>-->
-<!--</td>-->
 
 
 

@@ -5,7 +5,6 @@ $id = (isset($_POST['id'])) ? $_POST['id'] : null;
 if (!(isset($_SESSION['logado']) and $_SESSION['logado'] == 1)){
     header('location: login');
 } else {
-    # setcookie("id",$id);
     $conteudo = buscaConteudo($id);
 ?>
 
@@ -33,8 +32,8 @@ if (!(isset($_SESSION['logado']) and $_SESSION['logado'] == 1)){
         $salvou = salvarAlteracao($id, $conteudonovo);
 
         if ($salvou){
-            echo '<p>Alterações salvas com sucesso!</p>';
-            header('location: home');
+            #echo '<p>Alterações salvas com sucesso!</p>';
+            header('location: home?editado=true');
         } else {
             echo '<p>Erro ao salvar as alterações</p>';
         }
